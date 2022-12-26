@@ -14,7 +14,9 @@ create table assets (
 
 drop table if exists members_assets;
 create table members_assets (
-	
+	member_id int references family_members(member_id),
+	asset_id int references assets (asset_id),
+	constraint members_assets_pkey primary key (member_id, asset_id)
 );
 
 drop table if exists prices;
@@ -39,13 +41,4 @@ values
 	(10, 'Diki', 'Male'),
 	(11, 'Doni', 'Male'),
 	(12, 'Toni', 'Male')
-;
-
-insert into assets
-values
-	(1, 'Samsung Universe 9'),
-	(2, 'Samsung Galaxy Book'),
-	(3, 'iPhone 9'),
-	(4, 'iPhone X'),
-	(5, 'Huawei P30')
 ;
